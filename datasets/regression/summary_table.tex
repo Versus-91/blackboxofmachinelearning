@@ -1,0 +1,45 @@
+\begin{center}
+\begin{tabular}{lclc}
+\toprule
+\textbf{Dep. Variable:}    &     charges      & \textbf{  R-squared:         } &     0.751   \\
+\textbf{Model:}            &       OLS        & \textbf{  Adj. R-squared:    } &     0.749   \\
+\textbf{Method:}           &  Least Squares   & \textbf{  F-statistic:       } &     500.7   \\
+\textbf{Date:}             & Fri, 27 Oct 2023 & \textbf{  Prob (F-statistic):} &     0.00    \\
+\textbf{Time:}             &     22:36:04     & \textbf{  Log-Likelihood:    } &   -13548.   \\
+\textbf{No. Observations:} &        1338      & \textbf{  AIC:               } & 2.711e+04   \\
+\textbf{Df Residuals:}     &        1329      & \textbf{  BIC:               } & 2.716e+04   \\
+\textbf{Df Model:}         &           8      & \textbf{                     } &             \\
+\textbf{Covariance Type:}  &    nonrobust     & \textbf{                     } &             \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lcccccc}
+                           & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$> |$t$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\midrule
+\textbf{const}             &    -207.9704  &      424.418     &    -0.490  &         0.624        &    -1040.572    &      624.632     \\
+\textbf{age}               &     256.9773  &       11.898     &    21.597  &         0.000        &      233.635    &      280.319     \\
+\textbf{bmi}               &     337.9905  &       28.516     &    11.853  &         0.000        &      282.050    &      393.931     \\
+\textbf{children}          &     478.2346  &      137.810     &     3.470  &         0.001        &      207.886    &      748.583     \\
+\textbf{sex\_female}       &     -37.7747  &      266.878     &    -0.142  &         0.887        &     -561.322    &      485.772     \\
+\textbf{sex\_male}         &    -170.1957  &      272.537     &    -0.624  &         0.532        &     -704.845    &      364.454     \\
+\textbf{smoker\_no}        &   -1.203e+04  &      280.299     &   -42.932  &         0.000        &    -1.26e+04    &    -1.15e+04     \\
+\textbf{smoker\_yes}       &    1.183e+04  &      311.227     &    37.998  &         0.000        &     1.12e+04    &     1.24e+04     \\
+\textbf{region\_northeast} &     537.6281  &      300.027     &     1.792  &         0.073        &      -50.949    &     1126.205     \\
+\textbf{region\_northwest} &     191.1628  &      300.920     &     0.635  &         0.525        &     -399.168    &      781.493     \\
+\textbf{region\_southeast} &    -504.8186  &      330.075     &    -1.529  &         0.126        &    -1152.343    &      142.706     \\
+\textbf{region\_southwest} &    -431.9427  &      310.594     &    -1.391  &         0.165        &    -1041.251    &      177.365     \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lclc}
+\textbf{Omnibus:}       & 299.844 & \textbf{  Durbin-Watson:     } &     2.089  \\
+\textbf{Prob(Omnibus):} &   0.000 & \textbf{  Jarque-Bera (JB):  } &   716.591  \\
+\textbf{Skew:}          &   1.210 & \textbf{  Prob(JB):          } & 2.48e-156  \\
+\textbf{Kurtosis:}      &   5.646 & \textbf{  Cond. No.          } &  2.30e+18  \\
+\bottomrule
+\end{tabular}
+%\caption{OLS Regression Results}
+\end{center}
+
+Notes: \newline
+ [1] Standard Errors assume that the covariance matrix of the errors is correctly specified. \newline
+ [2] The smallest eigenvalue is 6.57e-31. This might indicate that there are \newline
+ strong multicollinearity problems or that the design matrix is singular.

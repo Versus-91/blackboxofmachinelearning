@@ -3,37 +3,35 @@
 \toprule
 \textbf{Dep. Variable:}    &     charges      & \textbf{  R-squared:         } &     0.755   \\
 \textbf{Model:}            &       OLS        & \textbf{  Adj. R-squared:    } &     0.753   \\
-\textbf{Method:}           &  Least Squares   & \textbf{  F-statistic:       } &     356.6   \\
-\textbf{Date:}             & Thu, 02 Nov 2023 & \textbf{  Prob (F-statistic):} & 8.89e-277   \\
-\textbf{Time:}             &     15:55:20     & \textbf{  Log-Likelihood:    } &   -9476.7   \\
+\textbf{Method:}           &  Least Squares   & \textbf{  F-statistic:       } &     407.7   \\
+\textbf{Date:}             & Fri, 03 Nov 2023 & \textbf{  Prob (F-statistic):} & 5.48e-278   \\
+\textbf{Time:}             &     01:12:22     & \textbf{  Log-Likelihood:    } &   -9476.9   \\
 \textbf{No. Observations:} &         936      & \textbf{  AIC:               } & 1.897e+04   \\
-\textbf{Df Residuals:}     &         927      & \textbf{  BIC:               } & 1.901e+04   \\
-\textbf{Df Model:}         &           8      & \textbf{                     } &             \\
+\textbf{Df Residuals:}     &         928      & \textbf{  BIC:               } & 1.901e+04   \\
+\textbf{Df Model:}         &           7      & \textbf{                     } &             \\
 \textbf{Covariance Type:}  &    nonrobust     & \textbf{                     } &             \\
 \bottomrule
 \end{tabular}
 \begin{tabular}{lcccccc}
                            & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$> |$t$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
 \midrule
-\textbf{const}             &     210.6141  &      507.982     &     0.415  &         0.679        &     -786.314    &     1207.543     \\
-\textbf{age}               &     251.6162  &       14.264     &    17.640  &         0.000        &      223.622    &      279.610     \\
-\textbf{bmi}               &     322.7619  &       34.140     &     9.454  &         0.000        &      255.761    &      389.762     \\
-\textbf{children}          &     348.4582  &      162.750     &     2.141  &         0.033        &       29.057    &      667.859     \\
-\textbf{sex\_female}       &     247.8701  &      317.486     &     0.781  &         0.435        &     -375.204    &      870.944     \\
-\textbf{sex\_male}         &     -37.2560  &      327.999     &    -0.114  &         0.910        &     -680.962    &      606.450     \\
-\textbf{smoker\_no}        &   -1.193e+04  &      331.672     &   -35.968  &         0.000        &    -1.26e+04    &    -1.13e+04     \\
-\textbf{smoker\_yes}       &    1.214e+04  &      374.111     &    32.451  &         0.000        &     1.14e+04    &     1.29e+04     \\
-\textbf{region\_northeast} &     580.6337  &      357.929     &     1.622  &         0.105        &     -121.812    &     1283.079     \\
-\textbf{region\_northwest} &     290.5847  &      365.309     &     0.795  &         0.427        &     -426.343    &     1007.512     \\
-\textbf{region\_southeast} &    -367.1333  &      395.586     &    -0.928  &         0.354        &    -1143.482    &      409.215     \\
-\textbf{region\_southwest} &    -293.4710  &      366.405     &    -0.801  &         0.423        &    -1012.550    &      425.608     \\
+\textbf{const}             &   -9217.8930  &      910.684     &   -10.122  &         0.000        &     -1.1e+04    &    -7430.655     \\
+\textbf{age}               &     251.6233  &       14.260     &    17.645  &         0.000        &      223.637    &      279.610     \\
+\textbf{sex}               &     1.84e-11  &     1.88e-12     &     9.810  &         0.000        &     1.47e-11    &     2.21e-11     \\
+\textbf{bmi}               &     321.5916  &       34.092     &     9.433  &         0.000        &      254.686    &      388.498     \\
+\textbf{children}          &     346.3390  &      162.680     &     2.129  &         0.034        &       27.075    &      665.603     \\
+\textbf{smoker}            &    2.405e+04  &      490.703     &    49.006  &         0.000        &     2.31e+04    &      2.5e+04     \\
+\textbf{region\_northeast} &   -1786.9557  &      392.919     &    -4.548  &         0.000        &    -2558.068    &    -1015.844     \\
+\textbf{region\_northwest} &   -2059.3033  &      402.476     &    -5.117  &         0.000        &    -2849.172    &    -1269.435     \\
+\textbf{region\_southeast} &   -2721.9616  &      455.538     &    -5.975  &         0.000        &    -3615.966    &    -1827.958     \\
+\textbf{region\_southwest} &   -2649.6724  &      413.108     &    -6.414  &         0.000        &    -3460.407    &    -1838.938     \\
 \bottomrule
 \end{tabular}
 \begin{tabular}{lclc}
-\textbf{Omnibus:}       & 207.442 & \textbf{  Durbin-Watson:     } &     1.954  \\
-\textbf{Prob(Omnibus):} &   0.000 & \textbf{  Jarque-Bera (JB):  } &   491.613  \\
-\textbf{Skew:}          &   1.182 & \textbf{  Prob(JB):          } & 1.77e-107  \\
-\textbf{Kurtosis:}      &   5.649 & \textbf{  Cond. No.          } &  6.04e+17  \\
+\textbf{Omnibus:}       & 208.412 & \textbf{  Durbin-Watson:     } &     1.955  \\
+\textbf{Prob(Omnibus):} &   0.000 & \textbf{  Jarque-Bera (JB):  } &   495.832  \\
+\textbf{Skew:}          &   1.186 & \textbf{  Prob(JB):          } & 2.15e-108  \\
+\textbf{Kurtosis:}      &   5.662 & \textbf{  Cond. No.          } &  1.83e+18  \\
 \bottomrule
 \end{tabular}
 %\caption{OLS Regression Results}
@@ -41,5 +39,5 @@
 
 Notes: \newline
  [1] Standard Errors assume that the covariance matrix of the errors is correctly specified. \newline
- [2] The smallest eigenvalue is 6.59e-30. This might indicate that there are \newline
+ [2] The smallest eigenvalue is 7.17e-31. This might indicate that there are \newline
  strong multicollinearity problems or that the design matrix is singular.

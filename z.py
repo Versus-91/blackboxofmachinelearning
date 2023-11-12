@@ -1,20 +1,32 @@
-import pandas as pd
+# Import necessary libraries
+import numpy as np
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
 
-# Create a sample DataFrame
-data = {'Category': ['A', 'B', 'A', 'C', 'B']}
-df = pd.DataFrame(data)
+# Load the diabetes dataset
+diabetes = datasets.load_diabetes()
+X = diabetes.data
+y = diabetes.target
+print(y)
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Specify the column to one-hot encode
-column_to_encode = 'Category'
+# Standardize the features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
 
-# One-hot encode the specified column
-one_hot = pd.get_dummies(df[column_to_encode], prefix=column_to_encode)
+# Initialize and train a Random Forest model
+model = RandomForestClassifier()
+model.fit(X_train, y_train )
 
-# Drop the original column from the DataFrame
-df = df.drop(column_to_encode, axis=1)
+# Make predictions on the test set
+y_pred = model.predict(X_test)
 
-# Concatenate the one-hot encoded DataFrame with the original DataFrame
-df_encoded = pd.concat([df, one_hot], axis=1)
+# Calculate accuracy and print a classification report
+accuracy = accuracy_score(y_test , y_pred)
+print(f"Random Forest Accuracy: {accuracy:.2f}")
 
-# Display the resulting DataFrame with one-hot encoding
-print(df_encoded)

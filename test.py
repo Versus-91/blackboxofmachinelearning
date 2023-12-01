@@ -1,45 +1,48 @@
-from sklearn.datasets import load_iris
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
-from sklearn.inspection import PartialDependenceDisplay
+from sklearn.datasets import fetch_openml
+from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import make_moons
+from sklearn.datasets import fetch_california_housing
+import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-from sklearn.datasets import load_diabetes
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
-from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
+# Load the California housing dataset
+california_housing = fetch_california_housing()
+data = pd.DataFrame(california_housing.data,
+                    columns=california_housing.feature_names)
+target = pd.DataFrame(california_housing.target, columns=['MedHouseVal'])
 
-# Load the diabetes dataset
-diabetes = load_diabetes(as_frame=True)
-print(diabetes.head())
+# Selecting a subset of features for demonstration
+selected_features = ['MedInc', 'HouseAge',
+                     'AveRooms', 'AveBedrms', 'Population']
 
-X, y = diabetes.data, diabetes.target
-
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42)
-
-# Normalize the features
-scaler = StandardScaler()
-X_train_normalized = scaler.fit_transform(X_train)
-X_test_normalized = scaler.transform(X_test)
-
-# Instantiate Logistic Regression model
-logreg = LogisticRegression(max_iter=2000)
-logreg.fit(X_train_normalized, y_train)
-print(X_train)
-
-# Instantiate SVM model
-svm = SVC(kernel='rbf', probability=True)
-svm.fit(X_train_normalized, y_train)
-
-# Plot partial dependence for a chosen feature index (e.g., feature 2 - body mass index) for Logistic Regression
-fig, ax = plt.subplots(figsize=(8, 6))
-PartialDependenceDisplay.from_estimator(logreg, X_train_normalized,
-                                        features=[0, 1], ax=ax, target=0)
-plt.title("Partial Dependence Plot - Body Mass Index (Logistic Regression)")
-plt.xlabel("Body Mass Index")
-plt.ylabel("Partial Dependence")
+# Pairplot to visualize relationships between selected features and target
+sns.pairplot(data[selected_features].join(target))
 plt.show()
+
+# Generating a nonlinearly separable dataset (moons)
+X, y = make_moons(n_samples=1000, noise=0.2, random_state=42)
+
+# Plotting the dataset
+plt.figure(figsize=(8, 6))
+plt.scatter(X[y == 0][:, 0], X[y == 0][:, 1], color='red', label='Class 0')
+plt.scatter(X[y == 1][:, 0], X[y == 1][:, 1], color='blue', label='Class 1')
+plt.title("Nonlinearly Separable Dataset (Moons)")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+plt.legend()
+plt.show()
+
+# Load the Breast Cancer Wisconsin (Diagnostic) dataset
+breast_cancer = load_breast_cancer()
+
+# Create a DataFrame from the dataset
+data = pd.DataFrame(breast_cancer.data, columns=breast_cancer.feature_names)
+target = pd.DataFrame(breast_cancer.target, columns=['diagnosis'])
+
+# Pairplot to visualize relationships between selected features and target
+selected_features = ['mean radius', 'mean texture',
+                     'mean perimeter', 'mean area', 'mean smoothness']
+sns.pairplot(data[selected_features].join(target))
+plt.show()
+

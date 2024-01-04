@@ -1,56 +1,34 @@
-from dython.nominal import associations  # correlation calculation
-import pandas as pd
-from sklearn.metrics import mean_squared_error
+from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.datasets import fetch_openml
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 
-boston = fetch_openml(data_id=43465)
-# Load Boston Housing dataset
-data = pd.DataFrame(data=boston.data, columns=boston.feature_names)
-data['target'] = boston.target
+# Load Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
 
-# Split the dataset into features and target variable
-X = boston.data  # Features
-y = boston.target  # Target variable (House prices)
-
-# Split the data into training and testing sets
+# Split the data into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42)
+    X, y, test_size=0.3, random_state=42, shuffle=False)
 
-# Initialize and fit the linear regression model
-model = LinearRegression()
-model.fit(X_train, y_train)
+# Define different lambda values (regularization strengths)
+lambda_values = [0.1, 1, 10]
 
-# Predict on the test set
-y_pred = model.predict(X_test)
+# Train a logistic regression model for each lambda value
+for lambda_val in lambda_values:
+    # Initialize logistic regression model with specified lambda
+    logreg = LogisticRegression(
+        C=100, solver='liblinear', multi_class='auto')
 
-# Model evaluation
-mse = mean_squared_error(y_test, y_pred)
+    # Fit the model
+    logreg.fit(X_train, y_train)
 
-print(f"Mean Squared Error: {mse}")
-# Retrieve feature importance (coefficients)
-feature_importance = pd.DataFrame({
-    'Feature': boston.feature_names,
-    'Coefficient': model.coef_
-})
+    # Predict on the test set
+    y_pred = logreg.predict(X_test)
 
-# Sort features by their absolute coefficient values
-feature_importance['Abs_Coefficient'] = np.abs(
-    feature_importance['Coefficient'])
-feature_importance = feature_importance.sort_values(
-    by='Abs_Coefficient', ascending=False)
-# Plotting the coefficients
-plt.figure(figsize=(10, 6))
-plt.barh(feature_importance['Feature'], feature_importance['Coefficient'], color='skyblue')
-plt.xlabel('Coefficient Value')
-plt.ylabel('Features')
-plt.title('Feature Importances - Coefficients of Linear Regression Model')
-plt.grid(axis='x')
-plt.show()
-# Compute only default value is False, it give correlation heatmap of all variable.setdefault()fig, ax = plt.subplots(figsize = (12, 10))
-correlation_matrix = associations(
-    data, mark_columns=True, compute_only=False, figsize=(15, 15),annot=True)
+    # Calculate accuracy
+    accuracy = accuracy_score(y_test, y_pred)
 
+    # Print lambda value and corresponding accuracy
+    print(f"Lambda: {lambda_val}, Accuracy: {accuracy:.4f}")

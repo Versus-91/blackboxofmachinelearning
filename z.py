@@ -1,17 +1,15 @@
-
-import seaborn as sns
 import pandas as pd
-from sklearn.datasets import load_iris
+from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
 
-# Load the Iris dataset from sklearn
-iris = load_iris()
+cal_housing = fetch_california_housing()
+X = pd.DataFrame(cal_housing.data, columns=cal_housing.feature_names)
+y = cal_housing.target
 
-# Create a DataFrame from the iris dataset
-iris_df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-iris_df['species'] = iris.target
+y -= y.mean()
 
-# Convert numeric species values to species names
-iris_df['species'] = iris_df['species'].map({0: 'setosa', 1: 'versicolor', 2: 'virginica'})
-
-# Create pairplot using Seaborn
-sns.pairplot(iris_df, hue='species', diag_kind='hist')
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.1, random_state=0
+)
+print(X_train)
+print(y_train)
